@@ -16,7 +16,7 @@ jobs:
       options: --privileged
 
     services:
-      mongo:
+      database:
         image: mongo:3.6-xenial
 
     steps:
