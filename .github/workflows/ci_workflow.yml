@@ -8,9 +8,17 @@ jobs:
   run_ci:
     name: run ci
     runs-on: ubuntu-latest
+
     container:
       image: node:12.16-alpine
+      env:
+        MONGODB_DNS: mongodb://database:27017/vuttr
       options: --privileged
+
+    services:
+      mongo:
+        image: mongo:3.6-xenial
+
     steps:
       - uses: actions/checkout@v2
 
