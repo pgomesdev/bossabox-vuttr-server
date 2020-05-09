@@ -39,8 +39,5 @@ jobs:
       - name: run e2e tests
         run: yarn test:e2e
 
-      - name: run typescript compiler
-        run: yarn tsc --noEmit
-
       - name: run linter
         run: yarn eslint \"{src,apps,libs,test}/**/*.ts\"
