@@ -4,8 +4,17 @@ services:
   api:
     container_name: vuttr-api
     build: .
+    env_file: .env
     ports:
       - 3000:3000
     volumes:
       - ./src:/home/app/src:cached
     command: yarn start:dev
+    depends_on:
+      - database
+
+  database:
+    image: mongo:3.6-xenial
+    restart: on-failure
+    ports:
+      - 27017:27017
