@@ -44,6 +44,7 @@
     "eslint-plugin-import": "^2.20.1",
     "husky": "^4.2.5",
     "jest": "^25.1.0",
+    "lint-staged": ">=10",
     "prettier": "^1.19.1",
     "supertest": "^4.0.2",
     "ts-jest": "25.2.1",
@@ -73,7 +74,15 @@
   },
   "husky": {
     "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && node_modules/.bin/git-cz --hook || true"
+      "prepare-commit-msg": "exec < /dev/tty && node_modules/.bin/git-cz --hook || true",
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --cache --fix",
+      "prettier --write",
+      "git add ."
+    ]
   }
 }
