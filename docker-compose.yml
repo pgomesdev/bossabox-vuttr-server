@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  api:
+    container_name: vuttr-api
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/home/app/src:cached
+    command: yarn start:dev
